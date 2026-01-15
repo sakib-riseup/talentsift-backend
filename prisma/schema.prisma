@@ -15,7 +15,6 @@ model User {
   role                   UserRole  @default(USER)
   phone                  String?
   image_url              String?
-  email_verified         Boolean   @default(false)
   is_active              Boolean   @default(true)
   is_deleted             Boolean   @default(false)
   refresh_token          String?
@@ -31,7 +30,7 @@ model User {
   jobs       Job[]
   creditLogs CreditLog[]
 
-  @@index([email]) // Redundant but kept for explicit documentation
+  @@index([email])
   @@index([refresh_token])
   @@index([password_reset_token])
   @@index([role])

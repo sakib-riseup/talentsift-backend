@@ -69,7 +69,6 @@ const register = async (payload: RegisterPayload) => {
       email: true,
       name: true,
       role: true,
-      email_verified: true,
       created_at: true,
     },
   });
@@ -161,7 +160,6 @@ const login = async (payload: LoginPayload) => {
       email: user.email,
       name: user.name,
       role: user.role,
-      email_verified: user.email_verified,
       created_at: user.created_at,
     },
     accessToken,
@@ -205,7 +203,6 @@ const getMe = async (userId: string) => {
       phone: user.phone,
       image_url: user.image_url,
       role: user.role,
-      email_verified: user.email_verified,
       created_at: user.created_at,
     },
   };
@@ -278,21 +275,16 @@ const forgotPassword = async (email: string) => {
     where: { email: email.toLowerCase() },
   });
 
-  // Don't reveal if user exists or not (security best practice)
   if (!user) {
-    // Return success even if user doesn't exist to prevent email enumeration
-    return {
-      message: 'A password reset link has been sent.',
-    };
+    throw new AppError(httpStatus.NOT_FOUND, 'User not found');
   }
 
-  // Check if user account is deleted or inactive
-  // Don't reveal specific reason to prevent enumeration
-  if (user.is_deleted || !user.is_active) {
-    // Return success message even if account is deleted/inactive
-    return {
-      message: 'A password reset link has been sent.',
-    };
+  // Check if user account is deleted
+  if (user.is_deleted) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      'User not found or account has been deleted',
+    );
   }
 
   // Generate reset token
@@ -397,7 +389,7 @@ const resetPassword = async (payload: ResetPasswordPayload) => {
       password_reset_token: null,
       password_reset_expires: null,
       password_reset_at: new Date(),
-      refresh_token: null, // Invalidate all refresh tokens for security
+      refresh_token: null,
     },
   });
 
@@ -456,7 +448,7 @@ const changePassword = async (payload: ChangePasswordPayload) => {
     data: {
       password: hashedPassword,
       password_reset_at: new Date(),
-      refresh_token: null, // Invalidate all refresh tokens for security
+      refresh_token: null,
     },
   });
 

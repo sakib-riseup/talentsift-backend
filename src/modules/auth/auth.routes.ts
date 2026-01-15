@@ -20,18 +20,19 @@ import authenticate from '@/middlewares/auth';
 const router = express.Router();
 
 // Public routes
-router.post(
-  '/register',
-  authRateLimiter,
-  validateRequest(registerSchema),
-  AuthController.register,
-);
 
 router.post(
   '/login',
-  authRateLimiter,
+  // authRateLimiter,
   validateRequest(loginSchema),
   AuthController.login,
+);
+
+router.post(
+  '/register',
+  // authRateLimiter,
+  validateRequest(registerSchema),
+  AuthController.register,
 );
 
 router.get('/me', authenticate(), AuthController.getMe);

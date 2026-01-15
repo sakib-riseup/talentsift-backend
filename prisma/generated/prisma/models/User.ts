@@ -42,7 +42,6 @@ export type UserMinAggregateOutputType = {
   role: $Enums.UserRole | null
   phone: string | null
   image_url: string | null
-  email_verified: boolean | null
   is_active: boolean | null
   is_deleted: boolean | null
   refresh_token: string | null
@@ -62,7 +61,6 @@ export type UserMaxAggregateOutputType = {
   role: $Enums.UserRole | null
   phone: string | null
   image_url: string | null
-  email_verified: boolean | null
   is_active: boolean | null
   is_deleted: boolean | null
   refresh_token: string | null
@@ -82,7 +80,6 @@ export type UserCountAggregateOutputType = {
   role: number
   phone: number
   image_url: number
-  email_verified: number
   is_active: number
   is_deleted: number
   refresh_token: number
@@ -112,7 +109,6 @@ export type UserMinAggregateInputType = {
   role?: true
   phone?: true
   image_url?: true
-  email_verified?: true
   is_active?: true
   is_deleted?: true
   refresh_token?: true
@@ -132,7 +128,6 @@ export type UserMaxAggregateInputType = {
   role?: true
   phone?: true
   image_url?: true
-  email_verified?: true
   is_active?: true
   is_deleted?: true
   refresh_token?: true
@@ -152,7 +147,6 @@ export type UserCountAggregateInputType = {
   role?: true
   phone?: true
   image_url?: true
-  email_verified?: true
   is_active?: true
   is_deleted?: true
   refresh_token?: true
@@ -259,7 +253,6 @@ export type UserGroupByOutputType = {
   role: $Enums.UserRole
   phone: string | null
   image_url: string | null
-  email_verified: boolean
   is_active: boolean
   is_deleted: boolean
   refresh_token: string | null
@@ -302,7 +295,6 @@ export type UserWhereInput = {
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   phone?: Prisma.StringNullableFilter<"User"> | string | null
   image_url?: Prisma.StringNullableFilter<"User"> | string | null
-  email_verified?: Prisma.BoolFilter<"User"> | boolean
   is_active?: Prisma.BoolFilter<"User"> | boolean
   is_deleted?: Prisma.BoolFilter<"User"> | boolean
   refresh_token?: Prisma.StringNullableFilter<"User"> | string | null
@@ -325,7 +317,6 @@ export type UserOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   image_url?: Prisma.SortOrderInput | Prisma.SortOrder
-  email_verified?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -351,7 +342,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   phone?: Prisma.StringNullableFilter<"User"> | string | null
   image_url?: Prisma.StringNullableFilter<"User"> | string | null
-  email_verified?: Prisma.BoolFilter<"User"> | boolean
   is_active?: Prisma.BoolFilter<"User"> | boolean
   is_deleted?: Prisma.BoolFilter<"User"> | boolean
   refresh_token?: Prisma.StringNullableFilter<"User"> | string | null
@@ -374,7 +364,6 @@ export type UserOrderByWithAggregationInput = {
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   image_url?: Prisma.SortOrderInput | Prisma.SortOrder
-  email_verified?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -402,7 +391,6 @@ export type UserScalarWhereWithAggregatesInput = {
   role?: Prisma.EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
   phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   image_url?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  email_verified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   is_active?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   is_deleted?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   refresh_token?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -422,7 +410,6 @@ export type UserCreateInput = {
   role?: $Enums.UserRole
   phone?: string | null
   image_url?: string | null
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: string | null
@@ -445,7 +432,6 @@ export type UserUncheckedCreateInput = {
   role?: $Enums.UserRole
   phone?: string | null
   image_url?: string | null
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: string | null
@@ -468,7 +454,6 @@ export type UserUpdateInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -491,7 +476,6 @@ export type UserUncheckedUpdateInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -514,7 +498,6 @@ export type UserCreateManyInput = {
   role?: $Enums.UserRole
   phone?: string | null
   image_url?: string | null
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: string | null
@@ -534,7 +517,6 @@ export type UserUpdateManyMutationInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -554,7 +536,6 @@ export type UserUncheckedUpdateManyInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -574,7 +555,6 @@ export type UserCountOrderByAggregateInput = {
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   image_url?: Prisma.SortOrder
-  email_verified?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrder
@@ -598,7 +578,6 @@ export type UserMaxOrderByAggregateInput = {
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   image_url?: Prisma.SortOrder
-  email_verified?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrder
@@ -618,7 +597,6 @@ export type UserMinOrderByAggregateInput = {
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   image_url?: Prisma.SortOrder
-  email_verified?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrder
@@ -721,7 +699,6 @@ export type UserCreateWithoutPaymentsInput = {
   role?: $Enums.UserRole
   phone?: string | null
   image_url?: string | null
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: string | null
@@ -743,7 +720,6 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   role?: $Enums.UserRole
   phone?: string | null
   image_url?: string | null
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: string | null
@@ -781,7 +757,6 @@ export type UserUpdateWithoutPaymentsInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -803,7 +778,6 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -825,7 +799,6 @@ export type UserCreateWithoutJobsInput = {
   role?: $Enums.UserRole
   phone?: string | null
   image_url?: string | null
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: string | null
@@ -847,7 +820,6 @@ export type UserUncheckedCreateWithoutJobsInput = {
   role?: $Enums.UserRole
   phone?: string | null
   image_url?: string | null
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: string | null
@@ -885,7 +857,6 @@ export type UserUpdateWithoutJobsInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -907,7 +878,6 @@ export type UserUncheckedUpdateWithoutJobsInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -929,7 +899,6 @@ export type UserCreateWithoutCreditLogsInput = {
   role?: $Enums.UserRole
   phone?: string | null
   image_url?: string | null
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: string | null
@@ -951,7 +920,6 @@ export type UserUncheckedCreateWithoutCreditLogsInput = {
   role?: $Enums.UserRole
   phone?: string | null
   image_url?: string | null
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: string | null
@@ -989,7 +957,6 @@ export type UserUpdateWithoutCreditLogsInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1011,7 +978,6 @@ export type UserUncheckedUpdateWithoutCreditLogsInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email_verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1082,7 +1048,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   role?: boolean
   phone?: boolean
   image_url?: boolean
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: boolean
@@ -1106,7 +1071,6 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   role?: boolean
   phone?: boolean
   image_url?: boolean
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: boolean
@@ -1126,7 +1090,6 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   role?: boolean
   phone?: boolean
   image_url?: boolean
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: boolean
@@ -1146,7 +1109,6 @@ export type UserSelectScalar = {
   role?: boolean
   phone?: boolean
   image_url?: boolean
-  email_verified?: boolean
   is_active?: boolean
   is_deleted?: boolean
   refresh_token?: boolean
@@ -1158,7 +1120,7 @@ export type UserSelectScalar = {
   updated_at?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "name" | "role" | "phone" | "image_url" | "email_verified" | "is_active" | "is_deleted" | "refresh_token" | "password_reset_token" | "password_reset_expires" | "password_reset_at" | "credit_balance" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "name" | "role" | "phone" | "image_url" | "is_active" | "is_deleted" | "refresh_token" | "password_reset_token" | "password_reset_expires" | "password_reset_at" | "credit_balance" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   payments?: boolean | Prisma.User$paymentsArgs<ExtArgs>
   jobs?: boolean | Prisma.User$jobsArgs<ExtArgs>
@@ -1183,7 +1145,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     role: $Enums.UserRole
     phone: string | null
     image_url: string | null
-    email_verified: boolean
     is_active: boolean
     is_deleted: boolean
     refresh_token: string | null
@@ -1626,7 +1587,6 @@ export interface UserFieldRefs {
   readonly role: Prisma.FieldRef<"User", 'UserRole'>
   readonly phone: Prisma.FieldRef<"User", 'String'>
   readonly image_url: Prisma.FieldRef<"User", 'String'>
-  readonly email_verified: Prisma.FieldRef<"User", 'Boolean'>
   readonly is_active: Prisma.FieldRef<"User", 'Boolean'>
   readonly is_deleted: Prisma.FieldRef<"User", 'Boolean'>
   readonly refresh_token: Prisma.FieldRef<"User", 'String'>
