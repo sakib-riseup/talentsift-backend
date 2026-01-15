@@ -175,18 +175,14 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   const response: any = {
     success: false,
     message: sanitizedMessage,
+    errorId,
     errorSources: sanitizedErrorSources,
-    errorId, // Include error ID for client-side tracking
+    timestamp: new Date().toISOString(),
   };
 
   // Only show detailed stack traces and full error in Development
   if (config.nodeEnv === 'development') {
     response.stack = err?.stack;
-    response.error = {
-      name: err?.name,
-      message: err?.message,
-      code: (err as any)?.code,
-    };
   }
 
   res.status(statusCode).json(response);

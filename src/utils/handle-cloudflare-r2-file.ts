@@ -27,6 +27,8 @@ const allowedTypes = /jpeg|jpg|png|gif|webp|heic|heif|pdf|doc|docx/;
 
 const storage = multer.memoryStorage();
 
+const maxFileSize = 50 * 1024 * 1024; // 50 MB
+
 const fileFilter = (
   _req: Request,
   file: Express.Multer.File,
@@ -66,7 +68,7 @@ const fileFilter = (
 const upload = multer({
   storage: storage,
   fileFilter: fileFilter,
-  limits: { fileSize: 30 * 1024 * 1024 },
+  limits: { fileSize: maxFileSize },
 });
 
 const convertHeicToJpeg = async (
