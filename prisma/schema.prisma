@@ -1,0 +1,212 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../prisma/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                     String    @id @default(cuid())
+  email                  String    @unique
+  password               String
+  name                   String
+  role                   UserRole  @default(USER)
+  phone                  String?
+  image_url              String?
+  email_verified         Boolean   @default(false)
+  is_active              Boolean   @default(true)
+  is_deleted             Boolean   @default(false)
+  refresh_token          String?
+  password_reset_token   String?
+  password_reset_expires DateTime?
+  password_reset_at      DateTime?
+  credit_balance         Int       @default(100)
+  created_at             DateTime  @default(now())
+  updated_at             DateTime  @updatedAt
+
+  // Relations
+  payments   Payment[]
+  jobs       Job[]
+  creditLogs CreditLog[]
+
+  @@index([email]) // Redundant but kept for explicit documentation
+  @@index([refresh_token])
+  @@index([password_reset_token])
+  @@index([role])
+  @@index([is_active])
+  @@index([is_deleted])
+  @@map("users")
+}
+
+model PackageBenefit {
+  id                String   @id @default(cuid())
+  benefit           String
+  credit_package_id String?
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+
+  // Relations
+  creditPackage CreditPackage? @relation(fields: [credit_package_id], references: [id], onDelete: Cascade)
+
+  @@map("package_benefits")
+}
+
+model CreditPackage {
+  id             String   @id @default(cuid())
+  name           String
+  description    String?
+  credits        Int
+  price          Float
+  is_active      Boolean  @default(true)
+  is_recommended Boolean  @default(false)
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  // Relations
+  benefits PackageBenefit[]
+  payments Payment[]
+
+  @@index([is_active])
+  @@index([is_recommended])
+  @@map("credit_packages")
+}
+
+model Payment {
+  id                String        @id @default(cuid())
+  user_id           String
+  package_id        String?
+  amount            Float
+  currency          String        @default("BDT")
+  bkash_payment_id  String?       @unique
+  bkash_trx_id      String?       @unique
+  status            PaymentStatus @default(PENDING)
+  credits_purchased Int
+  created_at        DateTime      @default(now())
+  updated_at        DateTime      @updatedAt
+
+  // Relations
+  user      User           @relation(fields: [user_id], references: [id], onDelete: Restrict)
+  package   CreditPackage? @relation(fields: [package_id], references: [id], onDelete: SetNull)
+  creditLog CreditLog?
+
+  @@index([user_id])
+  @@index([status])
+  @@index([created_at])
+  @@map("payments")
+}
+
+model Job {
+  id           String      @id @default(cuid())
+  company_name String?
+  title        String
+  job_type     JobType
+  job_location JobLocation
+  description  String      @db.Text
+  status       JobStatus   @default(OPEN)
+  user_id      String
+  created_at   DateTime    @default(now())
+  updated_at   DateTime    @updatedAt
+
+  // Relations
+  user       User        @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  candidates Candidate[]
+  creditLogs CreditLog[]
+
+  @@index([user_id])
+  @@index([status])
+  @@index([created_at])
+  @@map("jobs")
+}
+
+model Candidate {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  resume_url  String?
+  resume_text String?  @db.Text
+  score       Int
+  summary     String?  @db.Text
+  skills      String[]
+
+  job_id     String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relations
+  job Job @relation(fields: [job_id], references: [id], onDelete: Cascade)
+
+  @@index([job_id])
+  @@index([score])
+  @@index([email])
+  @@map("candidates")
+}
+
+model CreditLog {
+  id String @id @default(cuid())
+
+  amount      Int
+  type        CreditType
+  user_id     String
+  job_id      String?
+  payment_id  String?    @unique
+  description String?    @db.Text
+
+  // Relations
+  user    User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  job     Job?     @relation(fields: [job_id], references: [id], onDelete: SetNull)
+  payment Payment? @relation(fields: [payment_id], references: [id], onDelete: SetNull)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([user_id])
+  @@index([type])
+  @@index([created_at])
+  @@map("credit_logs")
+}
+
+// Enums
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
+  REFUNDED
+}
+
+enum CreditType {
+  PURCHASE
+  USAGE
+  BONUS
+  REFUND
+  MANUAL_ADJUSTMENT
+}
+
+enum UserRole {
+  USER
+  SUBSCRIBER
+  SUPER_ADMIN
+}
+
+enum JobStatus {
+  OPEN
+  CLOSED
+  DRAFT
+  ARCHIVED
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  FREELANCE
+}
+
+enum JobLocation {
+  ON_SITE
+  REMOTE
+  HYBRID
+}
