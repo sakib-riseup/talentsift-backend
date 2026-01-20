@@ -1,6 +1,5 @@
 import express from 'express';
 import { AuthRoutes } from '../modules/auth/auth.routes';
-import { JobRoutes } from '../modules/job/job.routes';
 
 const router = express.Router();
 
@@ -10,10 +9,6 @@ const routes: Route[] = [
   {
     path: '/auth',
     route: AuthRoutes,
-  },
-  {
-    path: '/jobs',
-    route: JobRoutes,
   },
 ];
 
