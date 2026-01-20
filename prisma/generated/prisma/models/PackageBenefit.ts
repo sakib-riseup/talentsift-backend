@@ -28,24 +28,18 @@ export type PackageBenefitMinAggregateOutputType = {
   id: string | null
   benefit: string | null
   credit_package_id: string | null
-  created_at: Date | null
-  updated_at: Date | null
 }
 
 export type PackageBenefitMaxAggregateOutputType = {
   id: string | null
   benefit: string | null
   credit_package_id: string | null
-  created_at: Date | null
-  updated_at: Date | null
 }
 
 export type PackageBenefitCountAggregateOutputType = {
   id: number
   benefit: number
   credit_package_id: number
-  created_at: number
-  updated_at: number
   _all: number
 }
 
@@ -54,24 +48,18 @@ export type PackageBenefitMinAggregateInputType = {
   id?: true
   benefit?: true
   credit_package_id?: true
-  created_at?: true
-  updated_at?: true
 }
 
 export type PackageBenefitMaxAggregateInputType = {
   id?: true
   benefit?: true
   credit_package_id?: true
-  created_at?: true
-  updated_at?: true
 }
 
 export type PackageBenefitCountAggregateInputType = {
   id?: true
   benefit?: true
   credit_package_id?: true
-  created_at?: true
-  updated_at?: true
   _all?: true
 }
 
@@ -150,9 +138,7 @@ export type PackageBenefitGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 export type PackageBenefitGroupByOutputType = {
   id: string
   benefit: string
-  credit_package_id: string | null
-  created_at: Date
-  updated_at: Date
+  credit_package_id: string
   _count: PackageBenefitCountAggregateOutputType | null
   _min: PackageBenefitMinAggregateOutputType | null
   _max: PackageBenefitMaxAggregateOutputType | null
@@ -179,18 +165,14 @@ export type PackageBenefitWhereInput = {
   NOT?: Prisma.PackageBenefitWhereInput | Prisma.PackageBenefitWhereInput[]
   id?: Prisma.StringFilter<"PackageBenefit"> | string
   benefit?: Prisma.StringFilter<"PackageBenefit"> | string
-  credit_package_id?: Prisma.StringNullableFilter<"PackageBenefit"> | string | null
-  created_at?: Prisma.DateTimeFilter<"PackageBenefit"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"PackageBenefit"> | Date | string
-  creditPackage?: Prisma.XOR<Prisma.CreditPackageNullableScalarRelationFilter, Prisma.CreditPackageWhereInput> | null
+  credit_package_id?: Prisma.StringFilter<"PackageBenefit"> | string
+  creditPackage?: Prisma.XOR<Prisma.CreditPackageScalarRelationFilter, Prisma.CreditPackageWhereInput>
 }
 
 export type PackageBenefitOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   benefit?: Prisma.SortOrder
-  credit_package_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  credit_package_id?: Prisma.SortOrder
   creditPackage?: Prisma.CreditPackageOrderByWithRelationInput
 }
 
@@ -200,18 +182,14 @@ export type PackageBenefitWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PackageBenefitWhereInput[]
   NOT?: Prisma.PackageBenefitWhereInput | Prisma.PackageBenefitWhereInput[]
   benefit?: Prisma.StringFilter<"PackageBenefit"> | string
-  credit_package_id?: Prisma.StringNullableFilter<"PackageBenefit"> | string | null
-  created_at?: Prisma.DateTimeFilter<"PackageBenefit"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"PackageBenefit"> | Date | string
-  creditPackage?: Prisma.XOR<Prisma.CreditPackageNullableScalarRelationFilter, Prisma.CreditPackageWhereInput> | null
+  credit_package_id?: Prisma.StringFilter<"PackageBenefit"> | string
+  creditPackage?: Prisma.XOR<Prisma.CreditPackageScalarRelationFilter, Prisma.CreditPackageWhereInput>
 }, "id">
 
 export type PackageBenefitOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   benefit?: Prisma.SortOrder
-  credit_package_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  credit_package_id?: Prisma.SortOrder
   _count?: Prisma.PackageBenefitCountOrderByAggregateInput
   _max?: Prisma.PackageBenefitMaxOrderByAggregateInput
   _min?: Prisma.PackageBenefitMinOrderByAggregateInput
@@ -223,88 +201,48 @@ export type PackageBenefitScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PackageBenefitScalarWhereWithAggregatesInput | Prisma.PackageBenefitScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"PackageBenefit"> | string
   benefit?: Prisma.StringWithAggregatesFilter<"PackageBenefit"> | string
-  credit_package_id?: Prisma.StringNullableWithAggregatesFilter<"PackageBenefit"> | string | null
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"PackageBenefit"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"PackageBenefit"> | Date | string
+  credit_package_id?: Prisma.StringWithAggregatesFilter<"PackageBenefit"> | string
 }
 
 export type PackageBenefitCreateInput = {
   id?: string
   benefit: string
-  created_at?: Date | string
-  updated_at?: Date | string
-  creditPackage?: Prisma.CreditPackageCreateNestedOneWithoutBenefitsInput
+  creditPackage: Prisma.CreditPackageCreateNestedOneWithoutBenefitsInput
 }
 
 export type PackageBenefitUncheckedCreateInput = {
   id?: string
   benefit: string
-  credit_package_id?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
+  credit_package_id: string
 }
 
 export type PackageBenefitUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   benefit?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creditPackage?: Prisma.CreditPackageUpdateOneWithoutBenefitsNestedInput
+  creditPackage?: Prisma.CreditPackageUpdateOneRequiredWithoutBenefitsNestedInput
 }
 
 export type PackageBenefitUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   benefit?: Prisma.StringFieldUpdateOperationsInput | string
-  credit_package_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  credit_package_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PackageBenefitCreateManyInput = {
   id?: string
   benefit: string
-  credit_package_id?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
+  credit_package_id: string
 }
 
 export type PackageBenefitUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   benefit?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PackageBenefitUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   benefit?: Prisma.StringFieldUpdateOperationsInput | string
-  credit_package_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type PackageBenefitCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  benefit?: Prisma.SortOrder
-  credit_package_id?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-}
-
-export type PackageBenefitMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  benefit?: Prisma.SortOrder
-  credit_package_id?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-}
-
-export type PackageBenefitMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  benefit?: Prisma.SortOrder
-  credit_package_id?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  credit_package_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PackageBenefitListRelationFilter = {
@@ -315,6 +253,24 @@ export type PackageBenefitListRelationFilter = {
 
 export type PackageBenefitOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type PackageBenefitCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  benefit?: Prisma.SortOrder
+  credit_package_id?: Prisma.SortOrder
+}
+
+export type PackageBenefitMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  benefit?: Prisma.SortOrder
+  credit_package_id?: Prisma.SortOrder
+}
+
+export type PackageBenefitMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  benefit?: Prisma.SortOrder
+  credit_package_id?: Prisma.SortOrder
 }
 
 export type PackageBenefitCreateNestedManyWithoutCreditPackageInput = {
@@ -362,15 +318,11 @@ export type PackageBenefitUncheckedUpdateManyWithoutCreditPackageNestedInput = {
 export type PackageBenefitCreateWithoutCreditPackageInput = {
   id?: string
   benefit: string
-  created_at?: Date | string
-  updated_at?: Date | string
 }
 
 export type PackageBenefitUncheckedCreateWithoutCreditPackageInput = {
   id?: string
   benefit: string
-  created_at?: Date | string
-  updated_at?: Date | string
 }
 
 export type PackageBenefitCreateOrConnectWithoutCreditPackageInput = {
@@ -405,37 +357,27 @@ export type PackageBenefitScalarWhereInput = {
   NOT?: Prisma.PackageBenefitScalarWhereInput | Prisma.PackageBenefitScalarWhereInput[]
   id?: Prisma.StringFilter<"PackageBenefit"> | string
   benefit?: Prisma.StringFilter<"PackageBenefit"> | string
-  credit_package_id?: Prisma.StringNullableFilter<"PackageBenefit"> | string | null
-  created_at?: Prisma.DateTimeFilter<"PackageBenefit"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"PackageBenefit"> | Date | string
+  credit_package_id?: Prisma.StringFilter<"PackageBenefit"> | string
 }
 
 export type PackageBenefitCreateManyCreditPackageInput = {
   id?: string
   benefit: string
-  created_at?: Date | string
-  updated_at?: Date | string
 }
 
 export type PackageBenefitUpdateWithoutCreditPackageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   benefit?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PackageBenefitUncheckedUpdateWithoutCreditPackageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   benefit?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PackageBenefitUncheckedUpdateManyWithoutCreditPackageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   benefit?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -444,59 +386,49 @@ export type PackageBenefitSelect<ExtArgs extends runtime.Types.Extensions.Intern
   id?: boolean
   benefit?: boolean
   credit_package_id?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  creditPackage?: boolean | Prisma.PackageBenefit$creditPackageArgs<ExtArgs>
+  creditPackage?: boolean | Prisma.CreditPackageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["packageBenefit"]>
 
 export type PackageBenefitSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   benefit?: boolean
   credit_package_id?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  creditPackage?: boolean | Prisma.PackageBenefit$creditPackageArgs<ExtArgs>
+  creditPackage?: boolean | Prisma.CreditPackageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["packageBenefit"]>
 
 export type PackageBenefitSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   benefit?: boolean
   credit_package_id?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  creditPackage?: boolean | Prisma.PackageBenefit$creditPackageArgs<ExtArgs>
+  creditPackage?: boolean | Prisma.CreditPackageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["packageBenefit"]>
 
 export type PackageBenefitSelectScalar = {
   id?: boolean
   benefit?: boolean
   credit_package_id?: boolean
-  created_at?: boolean
-  updated_at?: boolean
 }
 
-export type PackageBenefitOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "benefit" | "credit_package_id" | "created_at" | "updated_at", ExtArgs["result"]["packageBenefit"]>
+export type PackageBenefitOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "benefit" | "credit_package_id", ExtArgs["result"]["packageBenefit"]>
 export type PackageBenefitInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  creditPackage?: boolean | Prisma.PackageBenefit$creditPackageArgs<ExtArgs>
+  creditPackage?: boolean | Prisma.CreditPackageDefaultArgs<ExtArgs>
 }
 export type PackageBenefitIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  creditPackage?: boolean | Prisma.PackageBenefit$creditPackageArgs<ExtArgs>
+  creditPackage?: boolean | Prisma.CreditPackageDefaultArgs<ExtArgs>
 }
 export type PackageBenefitIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  creditPackage?: boolean | Prisma.PackageBenefit$creditPackageArgs<ExtArgs>
+  creditPackage?: boolean | Prisma.CreditPackageDefaultArgs<ExtArgs>
 }
 
 export type $PackageBenefitPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PackageBenefit"
   objects: {
-    creditPackage: Prisma.$CreditPackagePayload<ExtArgs> | null
+    creditPackage: Prisma.$CreditPackagePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     benefit: string
-    credit_package_id: string | null
-    created_at: Date
-    updated_at: Date
+    credit_package_id: string
   }, ExtArgs["result"]["packageBenefit"]>
   composites: {}
 }
@@ -891,7 +823,7 @@ readonly fields: PackageBenefitFieldRefs;
  */
 export interface Prisma__PackageBenefitClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  creditPackage<T extends Prisma.PackageBenefit$creditPackageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PackageBenefit$creditPackageArgs<ExtArgs>>): Prisma.Prisma__CreditPackageClient<runtime.Types.Result.GetResult<Prisma.$CreditPackagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  creditPackage<T extends Prisma.CreditPackageDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CreditPackageDefaultArgs<ExtArgs>>): Prisma.Prisma__CreditPackageClient<runtime.Types.Result.GetResult<Prisma.$CreditPackagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -924,8 +856,6 @@ export interface PackageBenefitFieldRefs {
   readonly id: Prisma.FieldRef<"PackageBenefit", 'String'>
   readonly benefit: Prisma.FieldRef<"PackageBenefit", 'String'>
   readonly credit_package_id: Prisma.FieldRef<"PackageBenefit", 'String'>
-  readonly created_at: Prisma.FieldRef<"PackageBenefit", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"PackageBenefit", 'DateTime'>
 }
     
 
@@ -1319,25 +1249,6 @@ export type PackageBenefitDeleteManyArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many PackageBenefits to delete.
    */
   limit?: number
-}
-
-/**
- * PackageBenefit.creditPackage
- */
-export type PackageBenefit$creditPackageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CreditPackage
-   */
-  select?: Prisma.CreditPackageSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CreditPackage
-   */
-  omit?: Prisma.CreditPackageOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CreditPackageInclude<ExtArgs> | null
-  where?: Prisma.CreditPackageWhereInput
 }
 
 /**

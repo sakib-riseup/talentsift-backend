@@ -42,8 +42,8 @@ export type PaymentMinAggregateOutputType = {
   package_id: string | null
   amount: number | null
   currency: string | null
-  bkash_payment_id: string | null
-  bkash_trx_id: string | null
+  gateway_payment_id: string | null
+  gateway_trx_id: string | null
   status: $Enums.PaymentStatus | null
   credits_purchased: number | null
   created_at: Date | null
@@ -56,8 +56,8 @@ export type PaymentMaxAggregateOutputType = {
   package_id: string | null
   amount: number | null
   currency: string | null
-  bkash_payment_id: string | null
-  bkash_trx_id: string | null
+  gateway_payment_id: string | null
+  gateway_trx_id: string | null
   status: $Enums.PaymentStatus | null
   credits_purchased: number | null
   created_at: Date | null
@@ -70,8 +70,8 @@ export type PaymentCountAggregateOutputType = {
   package_id: number
   amount: number
   currency: number
-  bkash_payment_id: number
-  bkash_trx_id: number
+  gateway_payment_id: number
+  gateway_trx_id: number
   status: number
   credits_purchased: number
   created_at: number
@@ -96,8 +96,8 @@ export type PaymentMinAggregateInputType = {
   package_id?: true
   amount?: true
   currency?: true
-  bkash_payment_id?: true
-  bkash_trx_id?: true
+  gateway_payment_id?: true
+  gateway_trx_id?: true
   status?: true
   credits_purchased?: true
   created_at?: true
@@ -110,8 +110,8 @@ export type PaymentMaxAggregateInputType = {
   package_id?: true
   amount?: true
   currency?: true
-  bkash_payment_id?: true
-  bkash_trx_id?: true
+  gateway_payment_id?: true
+  gateway_trx_id?: true
   status?: true
   credits_purchased?: true
   created_at?: true
@@ -124,8 +124,8 @@ export type PaymentCountAggregateInputType = {
   package_id?: true
   amount?: true
   currency?: true
-  bkash_payment_id?: true
-  bkash_trx_id?: true
+  gateway_payment_id?: true
+  gateway_trx_id?: true
   status?: true
   credits_purchased?: true
   created_at?: true
@@ -225,8 +225,8 @@ export type PaymentGroupByOutputType = {
   package_id: string | null
   amount: number
   currency: string
-  bkash_payment_id: string | null
-  bkash_trx_id: string | null
+  gateway_payment_id: string | null
+  gateway_trx_id: string | null
   status: $Enums.PaymentStatus
   credits_purchased: number
   created_at: Date
@@ -262,8 +262,8 @@ export type PaymentWhereInput = {
   package_id?: Prisma.StringNullableFilter<"Payment"> | string | null
   amount?: Prisma.FloatFilter<"Payment"> | number
   currency?: Prisma.StringFilter<"Payment"> | string
-  bkash_payment_id?: Prisma.StringNullableFilter<"Payment"> | string | null
-  bkash_trx_id?: Prisma.StringNullableFilter<"Payment"> | string | null
+  gateway_payment_id?: Prisma.StringNullableFilter<"Payment"> | string | null
+  gateway_trx_id?: Prisma.StringNullableFilter<"Payment"> | string | null
   status?: Prisma.EnumPaymentStatusFilter<"Payment"> | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFilter<"Payment"> | number
   created_at?: Prisma.DateTimeFilter<"Payment"> | Date | string
@@ -279,8 +279,8 @@ export type PaymentOrderByWithRelationInput = {
   package_id?: Prisma.SortOrderInput | Prisma.SortOrder
   amount?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  bkash_payment_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  bkash_trx_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  gateway_payment_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  gateway_trx_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   credits_purchased?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -292,8 +292,8 @@ export type PaymentOrderByWithRelationInput = {
 
 export type PaymentWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  bkash_payment_id?: string
-  bkash_trx_id?: string
+  gateway_payment_id?: string
+  gateway_trx_id?: string
   AND?: Prisma.PaymentWhereInput | Prisma.PaymentWhereInput[]
   OR?: Prisma.PaymentWhereInput[]
   NOT?: Prisma.PaymentWhereInput | Prisma.PaymentWhereInput[]
@@ -308,7 +308,7 @@ export type PaymentWhereUniqueInput = Prisma.AtLeast<{
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   package?: Prisma.XOR<Prisma.CreditPackageNullableScalarRelationFilter, Prisma.CreditPackageWhereInput> | null
   creditLog?: Prisma.XOR<Prisma.CreditLogNullableScalarRelationFilter, Prisma.CreditLogWhereInput> | null
-}, "id" | "bkash_payment_id" | "bkash_trx_id">
+}, "id" | "gateway_payment_id" | "gateway_trx_id">
 
 export type PaymentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -316,8 +316,8 @@ export type PaymentOrderByWithAggregationInput = {
   package_id?: Prisma.SortOrderInput | Prisma.SortOrder
   amount?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  bkash_payment_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  bkash_trx_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  gateway_payment_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  gateway_trx_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   credits_purchased?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -338,8 +338,8 @@ export type PaymentScalarWhereWithAggregatesInput = {
   package_id?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
   amount?: Prisma.FloatWithAggregatesFilter<"Payment"> | number
   currency?: Prisma.StringWithAggregatesFilter<"Payment"> | string
-  bkash_payment_id?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
-  bkash_trx_id?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
+  gateway_payment_id?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
+  gateway_trx_id?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
   status?: Prisma.EnumPaymentStatusWithAggregatesFilter<"Payment"> | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntWithAggregatesFilter<"Payment"> | number
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Payment"> | Date | string
@@ -350,8 +350,8 @@ export type PaymentCreateInput = {
   id?: string
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -367,8 +367,8 @@ export type PaymentUncheckedCreateInput = {
   package_id?: string | null
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -380,8 +380,8 @@ export type PaymentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -397,8 +397,8 @@ export type PaymentUncheckedUpdateInput = {
   package_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -412,8 +412,8 @@ export type PaymentCreateManyInput = {
   package_id?: string | null
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -424,8 +424,8 @@ export type PaymentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -438,8 +438,8 @@ export type PaymentUncheckedUpdateManyInput = {
   package_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -462,8 +462,8 @@ export type PaymentCountOrderByAggregateInput = {
   package_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  bkash_payment_id?: Prisma.SortOrder
-  bkash_trx_id?: Prisma.SortOrder
+  gateway_payment_id?: Prisma.SortOrder
+  gateway_trx_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   credits_purchased?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -481,8 +481,8 @@ export type PaymentMaxOrderByAggregateInput = {
   package_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  bkash_payment_id?: Prisma.SortOrder
-  bkash_trx_id?: Prisma.SortOrder
+  gateway_payment_id?: Prisma.SortOrder
+  gateway_trx_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   credits_purchased?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -495,8 +495,8 @@ export type PaymentMinOrderByAggregateInput = {
   package_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  bkash_payment_id?: Prisma.SortOrder
-  bkash_trx_id?: Prisma.SortOrder
+  gateway_payment_id?: Prisma.SortOrder
+  gateway_trx_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   credits_purchased?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -621,8 +621,8 @@ export type PaymentCreateWithoutUserInput = {
   id?: string
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -636,8 +636,8 @@ export type PaymentUncheckedCreateWithoutUserInput = {
   package_id?: string | null
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -680,8 +680,8 @@ export type PaymentScalarWhereInput = {
   package_id?: Prisma.StringNullableFilter<"Payment"> | string | null
   amount?: Prisma.FloatFilter<"Payment"> | number
   currency?: Prisma.StringFilter<"Payment"> | string
-  bkash_payment_id?: Prisma.StringNullableFilter<"Payment"> | string | null
-  bkash_trx_id?: Prisma.StringNullableFilter<"Payment"> | string | null
+  gateway_payment_id?: Prisma.StringNullableFilter<"Payment"> | string | null
+  gateway_trx_id?: Prisma.StringNullableFilter<"Payment"> | string | null
   status?: Prisma.EnumPaymentStatusFilter<"Payment"> | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFilter<"Payment"> | number
   created_at?: Prisma.DateTimeFilter<"Payment"> | Date | string
@@ -692,8 +692,8 @@ export type PaymentCreateWithoutPackageInput = {
   id?: string
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -707,8 +707,8 @@ export type PaymentUncheckedCreateWithoutPackageInput = {
   user_id: string
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -746,8 +746,8 @@ export type PaymentCreateWithoutCreditLogInput = {
   id?: string
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -762,8 +762,8 @@ export type PaymentUncheckedCreateWithoutCreditLogInput = {
   package_id?: string | null
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -790,8 +790,8 @@ export type PaymentUpdateWithoutCreditLogInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -806,8 +806,8 @@ export type PaymentUncheckedUpdateWithoutCreditLogInput = {
   package_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -819,8 +819,8 @@ export type PaymentCreateManyUserInput = {
   package_id?: string | null
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -831,8 +831,8 @@ export type PaymentUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -846,8 +846,8 @@ export type PaymentUncheckedUpdateWithoutUserInput = {
   package_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -860,8 +860,8 @@ export type PaymentUncheckedUpdateManyWithoutUserInput = {
   package_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -873,8 +873,8 @@ export type PaymentCreateManyPackageInput = {
   user_id: string
   amount: number
   currency?: string
-  bkash_payment_id?: string | null
-  bkash_trx_id?: string | null
+  gateway_payment_id?: string | null
+  gateway_trx_id?: string | null
   status?: $Enums.PaymentStatus
   credits_purchased: number
   created_at?: Date | string
@@ -885,8 +885,8 @@ export type PaymentUpdateWithoutPackageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -900,8 +900,8 @@ export type PaymentUncheckedUpdateWithoutPackageInput = {
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -914,8 +914,8 @@ export type PaymentUncheckedUpdateManyWithoutPackageInput = {
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  bkash_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bkash_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gateway_trx_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   credits_purchased?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -930,8 +930,8 @@ export type PaymentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   package_id?: boolean
   amount?: boolean
   currency?: boolean
-  bkash_payment_id?: boolean
-  bkash_trx_id?: boolean
+  gateway_payment_id?: boolean
+  gateway_trx_id?: boolean
   status?: boolean
   credits_purchased?: boolean
   created_at?: boolean
@@ -947,8 +947,8 @@ export type PaymentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   package_id?: boolean
   amount?: boolean
   currency?: boolean
-  bkash_payment_id?: boolean
-  bkash_trx_id?: boolean
+  gateway_payment_id?: boolean
+  gateway_trx_id?: boolean
   status?: boolean
   credits_purchased?: boolean
   created_at?: boolean
@@ -963,8 +963,8 @@ export type PaymentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   package_id?: boolean
   amount?: boolean
   currency?: boolean
-  bkash_payment_id?: boolean
-  bkash_trx_id?: boolean
+  gateway_payment_id?: boolean
+  gateway_trx_id?: boolean
   status?: boolean
   credits_purchased?: boolean
   created_at?: boolean
@@ -979,15 +979,15 @@ export type PaymentSelectScalar = {
   package_id?: boolean
   amount?: boolean
   currency?: boolean
-  bkash_payment_id?: boolean
-  bkash_trx_id?: boolean
+  gateway_payment_id?: boolean
+  gateway_trx_id?: boolean
   status?: boolean
   credits_purchased?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type PaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "package_id" | "amount" | "currency" | "bkash_payment_id" | "bkash_trx_id" | "status" | "credits_purchased" | "created_at" | "updated_at", ExtArgs["result"]["payment"]>
+export type PaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "package_id" | "amount" | "currency" | "gateway_payment_id" | "gateway_trx_id" | "status" | "credits_purchased" | "created_at" | "updated_at", ExtArgs["result"]["payment"]>
 export type PaymentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   package?: boolean | Prisma.Payment$packageArgs<ExtArgs>
@@ -1015,8 +1015,8 @@ export type $PaymentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     package_id: string | null
     amount: number
     currency: string
-    bkash_payment_id: string | null
-    bkash_trx_id: string | null
+    gateway_payment_id: string | null
+    gateway_trx_id: string | null
     status: $Enums.PaymentStatus
     credits_purchased: number
     created_at: Date
@@ -1452,8 +1452,8 @@ export interface PaymentFieldRefs {
   readonly package_id: Prisma.FieldRef<"Payment", 'String'>
   readonly amount: Prisma.FieldRef<"Payment", 'Float'>
   readonly currency: Prisma.FieldRef<"Payment", 'String'>
-  readonly bkash_payment_id: Prisma.FieldRef<"Payment", 'String'>
-  readonly bkash_trx_id: Prisma.FieldRef<"Payment", 'String'>
+  readonly gateway_payment_id: Prisma.FieldRef<"Payment", 'String'>
+  readonly gateway_trx_id: Prisma.FieldRef<"Payment", 'String'>
   readonly status: Prisma.FieldRef<"Payment", 'PaymentStatus'>
   readonly credits_purchased: Prisma.FieldRef<"Payment", 'Int'>
   readonly created_at: Prisma.FieldRef<"Payment", 'DateTime'>

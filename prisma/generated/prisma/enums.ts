@@ -9,12 +9,54 @@
 * 🟢 You can import this file directly.
 */
 
+export const ResumeNiche = {
+  FRONTEND: 'FRONTEND',
+  BACKEND: 'BACKEND',
+  FULL_STACK: 'FULL_STACK',
+  MOBILE: 'MOBILE',
+  UI_UX: 'UI_UX',
+  DEVOPS: 'DEVOPS',
+  DATA_SCIENCE: 'DATA_SCIENCE',
+  OTHER: 'OTHER'
+} as const
+
+export type ResumeNiche = (typeof ResumeNiche)[keyof typeof ResumeNiche]
+
+
+export const ProposalType = {
+  UPWORK_COVER_LETTER: 'UPWORK_COVER_LETTER',
+  JOB_APPLICATION_EMAIL: 'JOB_APPLICATION_EMAIL',
+  LINKEDIN_MESSAGE: 'LINKEDIN_MESSAGE',
+  COLD_EMAIL: 'COLD_EMAIL'
+} as const
+
+export type ProposalType = (typeof ProposalType)[keyof typeof ProposalType]
+
+
+export const ProposalTone = {
+  PROFESSIONAL: 'PROFESSIONAL',
+  FRIENDLY: 'FRIENDLY',
+  CONFIDENT: 'CONFIDENT',
+  CASUAL: 'CASUAL',
+  SHORT_CONCISE: 'SHORT_CONCISE'
+} as const
+
+export type ProposalTone = (typeof ProposalTone)[keyof typeof ProposalTone]
+
+
+export const UserRole = {
+  USER: 'USER',
+  ADMIN: 'ADMIN'
+} as const
+
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
 export const PaymentStatus = {
   PENDING: 'PENDING',
   COMPLETED: 'COMPLETED',
   FAILED: 'FAILED',
-  CANCELLED: 'CANCELLED',
-  REFUNDED: 'REFUNDED'
+  CANCELLED: 'CANCELLED'
 } as const
 
 export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
@@ -24,46 +66,7 @@ export const CreditType = {
   PURCHASE: 'PURCHASE',
   USAGE: 'USAGE',
   BONUS: 'BONUS',
-  REFUND: 'REFUND',
-  MANUAL_ADJUSTMENT: 'MANUAL_ADJUSTMENT'
+  REFUND: 'REFUND'
 } as const
 
 export type CreditType = (typeof CreditType)[keyof typeof CreditType]
-
-
-export const UserRole = {
-  USER: 'USER',
-  SUBSCRIBER: 'SUBSCRIBER',
-  SUPER_ADMIN: 'SUPER_ADMIN'
-} as const
-
-export type UserRole = (typeof UserRole)[keyof typeof UserRole]
-
-
-export const JobStatus = {
-  OPEN: 'OPEN',
-  CLOSED: 'CLOSED',
-  DRAFT: 'DRAFT',
-  ARCHIVED: 'ARCHIVED'
-} as const
-
-export type JobStatus = (typeof JobStatus)[keyof typeof JobStatus]
-
-
-export const JobType = {
-  FULL_TIME: 'FULL_TIME',
-  PART_TIME: 'PART_TIME',
-  CONTRACT: 'CONTRACT',
-  FREELANCE: 'FREELANCE'
-} as const
-
-export type JobType = (typeof JobType)[keyof typeof JobType]
-
-
-export const JobLocation = {
-  ON_SITE: 'ON_SITE',
-  REMOTE: 'REMOTE',
-  HYBRID: 'HYBRID'
-} as const
-
-export type JobLocation = (typeof JobLocation)[keyof typeof JobLocation]

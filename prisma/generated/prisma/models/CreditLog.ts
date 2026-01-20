@@ -38,36 +38,33 @@ export type CreditLogMinAggregateOutputType = {
   id: string | null
   amount: number | null
   type: $Enums.CreditType | null
-  user_id: string | null
-  job_id: string | null
-  payment_id: string | null
   description: string | null
+  user_id: string | null
+  proposal_id: string | null
+  payment_id: string | null
   created_at: Date | null
-  updated_at: Date | null
 }
 
 export type CreditLogMaxAggregateOutputType = {
   id: string | null
   amount: number | null
   type: $Enums.CreditType | null
-  user_id: string | null
-  job_id: string | null
-  payment_id: string | null
   description: string | null
+  user_id: string | null
+  proposal_id: string | null
+  payment_id: string | null
   created_at: Date | null
-  updated_at: Date | null
 }
 
 export type CreditLogCountAggregateOutputType = {
   id: number
   amount: number
   type: number
-  user_id: number
-  job_id: number
-  payment_id: number
   description: number
+  user_id: number
+  proposal_id: number
+  payment_id: number
   created_at: number
-  updated_at: number
   _all: number
 }
 
@@ -84,36 +81,33 @@ export type CreditLogMinAggregateInputType = {
   id?: true
   amount?: true
   type?: true
-  user_id?: true
-  job_id?: true
-  payment_id?: true
   description?: true
+  user_id?: true
+  proposal_id?: true
+  payment_id?: true
   created_at?: true
-  updated_at?: true
 }
 
 export type CreditLogMaxAggregateInputType = {
   id?: true
   amount?: true
   type?: true
-  user_id?: true
-  job_id?: true
-  payment_id?: true
   description?: true
+  user_id?: true
+  proposal_id?: true
+  payment_id?: true
   created_at?: true
-  updated_at?: true
 }
 
 export type CreditLogCountAggregateInputType = {
   id?: true
   amount?: true
   type?: true
-  user_id?: true
-  job_id?: true
-  payment_id?: true
   description?: true
+  user_id?: true
+  proposal_id?: true
+  payment_id?: true
   created_at?: true
-  updated_at?: true
   _all?: true
 }
 
@@ -207,12 +201,11 @@ export type CreditLogGroupByOutputType = {
   id: string
   amount: number
   type: $Enums.CreditType
-  user_id: string
-  job_id: string | null
-  payment_id: string | null
   description: string | null
+  user_id: string
+  proposal_id: string | null
+  payment_id: string | null
   created_at: Date
-  updated_at: Date
   _count: CreditLogCountAggregateOutputType | null
   _avg: CreditLogAvgAggregateOutputType | null
   _sum: CreditLogSumAggregateOutputType | null
@@ -242,14 +235,13 @@ export type CreditLogWhereInput = {
   id?: Prisma.StringFilter<"CreditLog"> | string
   amount?: Prisma.IntFilter<"CreditLog"> | number
   type?: Prisma.EnumCreditTypeFilter<"CreditLog"> | $Enums.CreditType
-  user_id?: Prisma.StringFilter<"CreditLog"> | string
-  job_id?: Prisma.StringNullableFilter<"CreditLog"> | string | null
-  payment_id?: Prisma.StringNullableFilter<"CreditLog"> | string | null
   description?: Prisma.StringNullableFilter<"CreditLog"> | string | null
+  user_id?: Prisma.StringFilter<"CreditLog"> | string
+  proposal_id?: Prisma.StringNullableFilter<"CreditLog"> | string | null
+  payment_id?: Prisma.StringNullableFilter<"CreditLog"> | string | null
   created_at?: Prisma.DateTimeFilter<"CreditLog"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"CreditLog"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  job?: Prisma.XOR<Prisma.JobNullableScalarRelationFilter, Prisma.JobWhereInput> | null
+  proposal?: Prisma.XOR<Prisma.ProposalNullableScalarRelationFilter, Prisma.ProposalWhereInput> | null
   payment?: Prisma.XOR<Prisma.PaymentNullableScalarRelationFilter, Prisma.PaymentWhereInput> | null
 }
 
@@ -257,45 +249,42 @@ export type CreditLogOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  job_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  payment_id?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  user_id?: Prisma.SortOrder
+  proposal_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  payment_id?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  job?: Prisma.JobOrderByWithRelationInput
+  proposal?: Prisma.ProposalOrderByWithRelationInput
   payment?: Prisma.PaymentOrderByWithRelationInput
 }
 
 export type CreditLogWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  proposal_id?: string
   payment_id?: string
   AND?: Prisma.CreditLogWhereInput | Prisma.CreditLogWhereInput[]
   OR?: Prisma.CreditLogWhereInput[]
   NOT?: Prisma.CreditLogWhereInput | Prisma.CreditLogWhereInput[]
   amount?: Prisma.IntFilter<"CreditLog"> | number
   type?: Prisma.EnumCreditTypeFilter<"CreditLog"> | $Enums.CreditType
-  user_id?: Prisma.StringFilter<"CreditLog"> | string
-  job_id?: Prisma.StringNullableFilter<"CreditLog"> | string | null
   description?: Prisma.StringNullableFilter<"CreditLog"> | string | null
+  user_id?: Prisma.StringFilter<"CreditLog"> | string
   created_at?: Prisma.DateTimeFilter<"CreditLog"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"CreditLog"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  job?: Prisma.XOR<Prisma.JobNullableScalarRelationFilter, Prisma.JobWhereInput> | null
+  proposal?: Prisma.XOR<Prisma.ProposalNullableScalarRelationFilter, Prisma.ProposalWhereInput> | null
   payment?: Prisma.XOR<Prisma.PaymentNullableScalarRelationFilter, Prisma.PaymentWhereInput> | null
-}, "id" | "payment_id">
+}, "id" | "proposal_id" | "payment_id">
 
 export type CreditLogOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  job_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  payment_id?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  user_id?: Prisma.SortOrder
+  proposal_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  payment_id?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
   _count?: Prisma.CreditLogCountOrderByAggregateInput
   _avg?: Prisma.CreditLogAvgOrderByAggregateInput
   _max?: Prisma.CreditLogMaxOrderByAggregateInput
@@ -310,12 +299,11 @@ export type CreditLogScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"CreditLog"> | string
   amount?: Prisma.IntWithAggregatesFilter<"CreditLog"> | number
   type?: Prisma.EnumCreditTypeWithAggregatesFilter<"CreditLog"> | $Enums.CreditType
-  user_id?: Prisma.StringWithAggregatesFilter<"CreditLog"> | string
-  job_id?: Prisma.StringNullableWithAggregatesFilter<"CreditLog"> | string | null
-  payment_id?: Prisma.StringNullableWithAggregatesFilter<"CreditLog"> | string | null
   description?: Prisma.StringNullableWithAggregatesFilter<"CreditLog"> | string | null
+  user_id?: Prisma.StringWithAggregatesFilter<"CreditLog"> | string
+  proposal_id?: Prisma.StringNullableWithAggregatesFilter<"CreditLog"> | string | null
+  payment_id?: Prisma.StringNullableWithAggregatesFilter<"CreditLog"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"CreditLog"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"CreditLog"> | Date | string
 }
 
 export type CreditLogCreateInput = {
@@ -324,9 +312,8 @@ export type CreditLogCreateInput = {
   type: $Enums.CreditType
   description?: string | null
   created_at?: Date | string
-  updated_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCreditLogsInput
-  job?: Prisma.JobCreateNestedOneWithoutCreditLogsInput
+  proposal?: Prisma.ProposalCreateNestedOneWithoutCreditLogInput
   payment?: Prisma.PaymentCreateNestedOneWithoutCreditLogInput
 }
 
@@ -334,12 +321,11 @@ export type CreditLogUncheckedCreateInput = {
   id?: string
   amount: number
   type: $Enums.CreditType
-  user_id: string
-  job_id?: string | null
-  payment_id?: string | null
   description?: string | null
+  user_id: string
+  proposal_id?: string | null
+  payment_id?: string | null
   created_at?: Date | string
-  updated_at?: Date | string
 }
 
 export type CreditLogUpdateInput = {
@@ -348,9 +334,8 @@ export type CreditLogUpdateInput = {
   type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCreditLogsNestedInput
-  job?: Prisma.JobUpdateOneWithoutCreditLogsNestedInput
+  proposal?: Prisma.ProposalUpdateOneWithoutCreditLogNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutCreditLogNestedInput
 }
 
@@ -358,24 +343,22 @@ export type CreditLogUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  job_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_id?: Prisma.StringFieldUpdateOperationsInput | string
+  proposal_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CreditLogCreateManyInput = {
   id?: string
   amount: number
   type: $Enums.CreditType
-  user_id: string
-  job_id?: string | null
-  payment_id?: string | null
   description?: string | null
+  user_id: string
+  proposal_id?: string | null
+  payment_id?: string | null
   created_at?: Date | string
-  updated_at?: Date | string
 }
 
 export type CreditLogUpdateManyMutationInput = {
@@ -384,19 +367,17 @@ export type CreditLogUpdateManyMutationInput = {
   type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CreditLogUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  job_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_id?: Prisma.StringFieldUpdateOperationsInput | string
+  proposal_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CreditLogListRelationFilter = {
@@ -418,12 +399,11 @@ export type CreditLogCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  job_id?: Prisma.SortOrder
-  payment_id?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  user_id?: Prisma.SortOrder
+  proposal_id?: Prisma.SortOrder
+  payment_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
 }
 
 export type CreditLogAvgOrderByAggregateInput = {
@@ -434,24 +414,22 @@ export type CreditLogMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  job_id?: Prisma.SortOrder
-  payment_id?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  user_id?: Prisma.SortOrder
+  proposal_id?: Prisma.SortOrder
+  payment_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
 }
 
 export type CreditLogMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  job_id?: Prisma.SortOrder
-  payment_id?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  user_id?: Prisma.SortOrder
+  proposal_id?: Prisma.SortOrder
+  payment_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
 }
 
 export type CreditLogSumOrderByAggregateInput = {
@@ -500,6 +478,38 @@ export type CreditLogUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.CreditLogScalarWhereInput | Prisma.CreditLogScalarWhereInput[]
 }
 
+export type CreditLogCreateNestedOneWithoutProposalInput = {
+  create?: Prisma.XOR<Prisma.CreditLogCreateWithoutProposalInput, Prisma.CreditLogUncheckedCreateWithoutProposalInput>
+  connectOrCreate?: Prisma.CreditLogCreateOrConnectWithoutProposalInput
+  connect?: Prisma.CreditLogWhereUniqueInput
+}
+
+export type CreditLogUncheckedCreateNestedOneWithoutProposalInput = {
+  create?: Prisma.XOR<Prisma.CreditLogCreateWithoutProposalInput, Prisma.CreditLogUncheckedCreateWithoutProposalInput>
+  connectOrCreate?: Prisma.CreditLogCreateOrConnectWithoutProposalInput
+  connect?: Prisma.CreditLogWhereUniqueInput
+}
+
+export type CreditLogUpdateOneWithoutProposalNestedInput = {
+  create?: Prisma.XOR<Prisma.CreditLogCreateWithoutProposalInput, Prisma.CreditLogUncheckedCreateWithoutProposalInput>
+  connectOrCreate?: Prisma.CreditLogCreateOrConnectWithoutProposalInput
+  upsert?: Prisma.CreditLogUpsertWithoutProposalInput
+  disconnect?: Prisma.CreditLogWhereInput | boolean
+  delete?: Prisma.CreditLogWhereInput | boolean
+  connect?: Prisma.CreditLogWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CreditLogUpdateToOneWithWhereWithoutProposalInput, Prisma.CreditLogUpdateWithoutProposalInput>, Prisma.CreditLogUncheckedUpdateWithoutProposalInput>
+}
+
+export type CreditLogUncheckedUpdateOneWithoutProposalNestedInput = {
+  create?: Prisma.XOR<Prisma.CreditLogCreateWithoutProposalInput, Prisma.CreditLogUncheckedCreateWithoutProposalInput>
+  connectOrCreate?: Prisma.CreditLogCreateOrConnectWithoutProposalInput
+  upsert?: Prisma.CreditLogUpsertWithoutProposalInput
+  disconnect?: Prisma.CreditLogWhereInput | boolean
+  delete?: Prisma.CreditLogWhereInput | boolean
+  connect?: Prisma.CreditLogWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CreditLogUpdateToOneWithWhereWithoutProposalInput, Prisma.CreditLogUpdateWithoutProposalInput>, Prisma.CreditLogUncheckedUpdateWithoutProposalInput>
+}
+
 export type CreditLogCreateNestedOneWithoutPaymentInput = {
   create?: Prisma.XOR<Prisma.CreditLogCreateWithoutPaymentInput, Prisma.CreditLogUncheckedCreateWithoutPaymentInput>
   connectOrCreate?: Prisma.CreditLogCreateOrConnectWithoutPaymentInput
@@ -532,48 +542,6 @@ export type CreditLogUncheckedUpdateOneWithoutPaymentNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CreditLogUpdateToOneWithWhereWithoutPaymentInput, Prisma.CreditLogUpdateWithoutPaymentInput>, Prisma.CreditLogUncheckedUpdateWithoutPaymentInput>
 }
 
-export type CreditLogCreateNestedManyWithoutJobInput = {
-  create?: Prisma.XOR<Prisma.CreditLogCreateWithoutJobInput, Prisma.CreditLogUncheckedCreateWithoutJobInput> | Prisma.CreditLogCreateWithoutJobInput[] | Prisma.CreditLogUncheckedCreateWithoutJobInput[]
-  connectOrCreate?: Prisma.CreditLogCreateOrConnectWithoutJobInput | Prisma.CreditLogCreateOrConnectWithoutJobInput[]
-  createMany?: Prisma.CreditLogCreateManyJobInputEnvelope
-  connect?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-}
-
-export type CreditLogUncheckedCreateNestedManyWithoutJobInput = {
-  create?: Prisma.XOR<Prisma.CreditLogCreateWithoutJobInput, Prisma.CreditLogUncheckedCreateWithoutJobInput> | Prisma.CreditLogCreateWithoutJobInput[] | Prisma.CreditLogUncheckedCreateWithoutJobInput[]
-  connectOrCreate?: Prisma.CreditLogCreateOrConnectWithoutJobInput | Prisma.CreditLogCreateOrConnectWithoutJobInput[]
-  createMany?: Prisma.CreditLogCreateManyJobInputEnvelope
-  connect?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-}
-
-export type CreditLogUpdateManyWithoutJobNestedInput = {
-  create?: Prisma.XOR<Prisma.CreditLogCreateWithoutJobInput, Prisma.CreditLogUncheckedCreateWithoutJobInput> | Prisma.CreditLogCreateWithoutJobInput[] | Prisma.CreditLogUncheckedCreateWithoutJobInput[]
-  connectOrCreate?: Prisma.CreditLogCreateOrConnectWithoutJobInput | Prisma.CreditLogCreateOrConnectWithoutJobInput[]
-  upsert?: Prisma.CreditLogUpsertWithWhereUniqueWithoutJobInput | Prisma.CreditLogUpsertWithWhereUniqueWithoutJobInput[]
-  createMany?: Prisma.CreditLogCreateManyJobInputEnvelope
-  set?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-  disconnect?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-  delete?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-  connect?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-  update?: Prisma.CreditLogUpdateWithWhereUniqueWithoutJobInput | Prisma.CreditLogUpdateWithWhereUniqueWithoutJobInput[]
-  updateMany?: Prisma.CreditLogUpdateManyWithWhereWithoutJobInput | Prisma.CreditLogUpdateManyWithWhereWithoutJobInput[]
-  deleteMany?: Prisma.CreditLogScalarWhereInput | Prisma.CreditLogScalarWhereInput[]
-}
-
-export type CreditLogUncheckedUpdateManyWithoutJobNestedInput = {
-  create?: Prisma.XOR<Prisma.CreditLogCreateWithoutJobInput, Prisma.CreditLogUncheckedCreateWithoutJobInput> | Prisma.CreditLogCreateWithoutJobInput[] | Prisma.CreditLogUncheckedCreateWithoutJobInput[]
-  connectOrCreate?: Prisma.CreditLogCreateOrConnectWithoutJobInput | Prisma.CreditLogCreateOrConnectWithoutJobInput[]
-  upsert?: Prisma.CreditLogUpsertWithWhereUniqueWithoutJobInput | Prisma.CreditLogUpsertWithWhereUniqueWithoutJobInput[]
-  createMany?: Prisma.CreditLogCreateManyJobInputEnvelope
-  set?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-  disconnect?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-  delete?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-  connect?: Prisma.CreditLogWhereUniqueInput | Prisma.CreditLogWhereUniqueInput[]
-  update?: Prisma.CreditLogUpdateWithWhereUniqueWithoutJobInput | Prisma.CreditLogUpdateWithWhereUniqueWithoutJobInput[]
-  updateMany?: Prisma.CreditLogUpdateManyWithWhereWithoutJobInput | Prisma.CreditLogUpdateManyWithWhereWithoutJobInput[]
-  deleteMany?: Prisma.CreditLogScalarWhereInput | Prisma.CreditLogScalarWhereInput[]
-}
-
 export type EnumCreditTypeFieldUpdateOperationsInput = {
   set?: $Enums.CreditType
 }
@@ -584,8 +552,7 @@ export type CreditLogCreateWithoutUserInput = {
   type: $Enums.CreditType
   description?: string | null
   created_at?: Date | string
-  updated_at?: Date | string
-  job?: Prisma.JobCreateNestedOneWithoutCreditLogsInput
+  proposal?: Prisma.ProposalCreateNestedOneWithoutCreditLogInput
   payment?: Prisma.PaymentCreateNestedOneWithoutCreditLogInput
 }
 
@@ -593,11 +560,10 @@ export type CreditLogUncheckedCreateWithoutUserInput = {
   id?: string
   amount: number
   type: $Enums.CreditType
-  job_id?: string | null
-  payment_id?: string | null
   description?: string | null
+  proposal_id?: string | null
+  payment_id?: string | null
   created_at?: Date | string
-  updated_at?: Date | string
 }
 
 export type CreditLogCreateOrConnectWithoutUserInput = {
@@ -633,12 +599,67 @@ export type CreditLogScalarWhereInput = {
   id?: Prisma.StringFilter<"CreditLog"> | string
   amount?: Prisma.IntFilter<"CreditLog"> | number
   type?: Prisma.EnumCreditTypeFilter<"CreditLog"> | $Enums.CreditType
-  user_id?: Prisma.StringFilter<"CreditLog"> | string
-  job_id?: Prisma.StringNullableFilter<"CreditLog"> | string | null
-  payment_id?: Prisma.StringNullableFilter<"CreditLog"> | string | null
   description?: Prisma.StringNullableFilter<"CreditLog"> | string | null
+  user_id?: Prisma.StringFilter<"CreditLog"> | string
+  proposal_id?: Prisma.StringNullableFilter<"CreditLog"> | string | null
+  payment_id?: Prisma.StringNullableFilter<"CreditLog"> | string | null
   created_at?: Prisma.DateTimeFilter<"CreditLog"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"CreditLog"> | Date | string
+}
+
+export type CreditLogCreateWithoutProposalInput = {
+  id?: string
+  amount: number
+  type: $Enums.CreditType
+  description?: string | null
+  created_at?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCreditLogsInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutCreditLogInput
+}
+
+export type CreditLogUncheckedCreateWithoutProposalInput = {
+  id?: string
+  amount: number
+  type: $Enums.CreditType
+  description?: string | null
+  user_id: string
+  payment_id?: string | null
+  created_at?: Date | string
+}
+
+export type CreditLogCreateOrConnectWithoutProposalInput = {
+  where: Prisma.CreditLogWhereUniqueInput
+  create: Prisma.XOR<Prisma.CreditLogCreateWithoutProposalInput, Prisma.CreditLogUncheckedCreateWithoutProposalInput>
+}
+
+export type CreditLogUpsertWithoutProposalInput = {
+  update: Prisma.XOR<Prisma.CreditLogUpdateWithoutProposalInput, Prisma.CreditLogUncheckedUpdateWithoutProposalInput>
+  create: Prisma.XOR<Prisma.CreditLogCreateWithoutProposalInput, Prisma.CreditLogUncheckedCreateWithoutProposalInput>
+  where?: Prisma.CreditLogWhereInput
+}
+
+export type CreditLogUpdateToOneWithWhereWithoutProposalInput = {
+  where?: Prisma.CreditLogWhereInput
+  data: Prisma.XOR<Prisma.CreditLogUpdateWithoutProposalInput, Prisma.CreditLogUncheckedUpdateWithoutProposalInput>
+}
+
+export type CreditLogUpdateWithoutProposalInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCreditLogsNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutCreditLogNestedInput
+}
+
+export type CreditLogUncheckedUpdateWithoutProposalInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_id?: Prisma.StringFieldUpdateOperationsInput | string
+  payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CreditLogCreateWithoutPaymentInput = {
@@ -647,20 +668,18 @@ export type CreditLogCreateWithoutPaymentInput = {
   type: $Enums.CreditType
   description?: string | null
   created_at?: Date | string
-  updated_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCreditLogsInput
-  job?: Prisma.JobCreateNestedOneWithoutCreditLogsInput
+  proposal?: Prisma.ProposalCreateNestedOneWithoutCreditLogInput
 }
 
 export type CreditLogUncheckedCreateWithoutPaymentInput = {
   id?: string
   amount: number
   type: $Enums.CreditType
-  user_id: string
-  job_id?: string | null
   description?: string | null
+  user_id: string
+  proposal_id?: string | null
   created_at?: Date | string
-  updated_at?: Date | string
 }
 
 export type CreditLogCreateOrConnectWithoutPaymentInput = {
@@ -685,79 +704,28 @@ export type CreditLogUpdateWithoutPaymentInput = {
   type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCreditLogsNestedInput
-  job?: Prisma.JobUpdateOneWithoutCreditLogsNestedInput
+  proposal?: Prisma.ProposalUpdateOneWithoutCreditLogNestedInput
 }
 
 export type CreditLogUncheckedUpdateWithoutPaymentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  job_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_id?: Prisma.StringFieldUpdateOperationsInput | string
+  proposal_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type CreditLogCreateWithoutJobInput = {
-  id?: string
-  amount: number
-  type: $Enums.CreditType
-  description?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutCreditLogsInput
-  payment?: Prisma.PaymentCreateNestedOneWithoutCreditLogInput
-}
-
-export type CreditLogUncheckedCreateWithoutJobInput = {
-  id?: string
-  amount: number
-  type: $Enums.CreditType
-  user_id: string
-  payment_id?: string | null
-  description?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
-}
-
-export type CreditLogCreateOrConnectWithoutJobInput = {
-  where: Prisma.CreditLogWhereUniqueInput
-  create: Prisma.XOR<Prisma.CreditLogCreateWithoutJobInput, Prisma.CreditLogUncheckedCreateWithoutJobInput>
-}
-
-export type CreditLogCreateManyJobInputEnvelope = {
-  data: Prisma.CreditLogCreateManyJobInput | Prisma.CreditLogCreateManyJobInput[]
-  skipDuplicates?: boolean
-}
-
-export type CreditLogUpsertWithWhereUniqueWithoutJobInput = {
-  where: Prisma.CreditLogWhereUniqueInput
-  update: Prisma.XOR<Prisma.CreditLogUpdateWithoutJobInput, Prisma.CreditLogUncheckedUpdateWithoutJobInput>
-  create: Prisma.XOR<Prisma.CreditLogCreateWithoutJobInput, Prisma.CreditLogUncheckedCreateWithoutJobInput>
-}
-
-export type CreditLogUpdateWithWhereUniqueWithoutJobInput = {
-  where: Prisma.CreditLogWhereUniqueInput
-  data: Prisma.XOR<Prisma.CreditLogUpdateWithoutJobInput, Prisma.CreditLogUncheckedUpdateWithoutJobInput>
-}
-
-export type CreditLogUpdateManyWithWhereWithoutJobInput = {
-  where: Prisma.CreditLogScalarWhereInput
-  data: Prisma.XOR<Prisma.CreditLogUpdateManyMutationInput, Prisma.CreditLogUncheckedUpdateManyWithoutJobInput>
 }
 
 export type CreditLogCreateManyUserInput = {
   id?: string
   amount: number
   type: $Enums.CreditType
-  job_id?: string | null
-  payment_id?: string | null
   description?: string | null
+  proposal_id?: string | null
+  payment_id?: string | null
   created_at?: Date | string
-  updated_at?: Date | string
 }
 
 export type CreditLogUpdateWithoutUserInput = {
@@ -766,8 +734,7 @@ export type CreditLogUpdateWithoutUserInput = {
   type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  job?: Prisma.JobUpdateOneWithoutCreditLogsNestedInput
+  proposal?: Prisma.ProposalUpdateOneWithoutCreditLogNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutCreditLogNestedInput
 }
 
@@ -775,66 +742,20 @@ export type CreditLogUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
-  job_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  proposal_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CreditLogUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
-  job_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  proposal_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type CreditLogCreateManyJobInput = {
-  id?: string
-  amount: number
-  type: $Enums.CreditType
-  user_id: string
-  payment_id?: string | null
-  description?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
-}
-
-export type CreditLogUpdateWithoutJobInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutCreditLogsNestedInput
-  payment?: Prisma.PaymentUpdateOneWithoutCreditLogNestedInput
-}
-
-export type CreditLogUncheckedUpdateWithoutJobInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type CreditLogUncheckedUpdateManyWithoutJobInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumCreditTypeFieldUpdateOperationsInput | $Enums.CreditType
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  payment_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -843,14 +764,13 @@ export type CreditLogSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id?: boolean
   amount?: boolean
   type?: boolean
-  user_id?: boolean
-  job_id?: boolean
-  payment_id?: boolean
   description?: boolean
+  user_id?: boolean
+  proposal_id?: boolean
+  payment_id?: boolean
   created_at?: boolean
-  updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  job?: boolean | Prisma.CreditLog$jobArgs<ExtArgs>
+  proposal?: boolean | Prisma.CreditLog$proposalArgs<ExtArgs>
   payment?: boolean | Prisma.CreditLog$paymentArgs<ExtArgs>
 }, ExtArgs["result"]["creditLog"]>
 
@@ -858,14 +778,13 @@ export type CreditLogSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   amount?: boolean
   type?: boolean
-  user_id?: boolean
-  job_id?: boolean
-  payment_id?: boolean
   description?: boolean
+  user_id?: boolean
+  proposal_id?: boolean
+  payment_id?: boolean
   created_at?: boolean
-  updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  job?: boolean | Prisma.CreditLog$jobArgs<ExtArgs>
+  proposal?: boolean | Prisma.CreditLog$proposalArgs<ExtArgs>
   payment?: boolean | Prisma.CreditLog$paymentArgs<ExtArgs>
 }, ExtArgs["result"]["creditLog"]>
 
@@ -873,14 +792,13 @@ export type CreditLogSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   amount?: boolean
   type?: boolean
-  user_id?: boolean
-  job_id?: boolean
-  payment_id?: boolean
   description?: boolean
+  user_id?: boolean
+  proposal_id?: boolean
+  payment_id?: boolean
   created_at?: boolean
-  updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  job?: boolean | Prisma.CreditLog$jobArgs<ExtArgs>
+  proposal?: boolean | Prisma.CreditLog$proposalArgs<ExtArgs>
   payment?: boolean | Prisma.CreditLog$paymentArgs<ExtArgs>
 }, ExtArgs["result"]["creditLog"]>
 
@@ -888,28 +806,27 @@ export type CreditLogSelectScalar = {
   id?: boolean
   amount?: boolean
   type?: boolean
-  user_id?: boolean
-  job_id?: boolean
-  payment_id?: boolean
   description?: boolean
+  user_id?: boolean
+  proposal_id?: boolean
+  payment_id?: boolean
   created_at?: boolean
-  updated_at?: boolean
 }
 
-export type CreditLogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "type" | "user_id" | "job_id" | "payment_id" | "description" | "created_at" | "updated_at", ExtArgs["result"]["creditLog"]>
+export type CreditLogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "type" | "description" | "user_id" | "proposal_id" | "payment_id" | "created_at", ExtArgs["result"]["creditLog"]>
 export type CreditLogInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  job?: boolean | Prisma.CreditLog$jobArgs<ExtArgs>
+  proposal?: boolean | Prisma.CreditLog$proposalArgs<ExtArgs>
   payment?: boolean | Prisma.CreditLog$paymentArgs<ExtArgs>
 }
 export type CreditLogIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  job?: boolean | Prisma.CreditLog$jobArgs<ExtArgs>
+  proposal?: boolean | Prisma.CreditLog$proposalArgs<ExtArgs>
   payment?: boolean | Prisma.CreditLog$paymentArgs<ExtArgs>
 }
 export type CreditLogIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  job?: boolean | Prisma.CreditLog$jobArgs<ExtArgs>
+  proposal?: boolean | Prisma.CreditLog$proposalArgs<ExtArgs>
   payment?: boolean | Prisma.CreditLog$paymentArgs<ExtArgs>
 }
 
@@ -917,19 +834,18 @@ export type $CreditLogPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   name: "CreditLog"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    job: Prisma.$JobPayload<ExtArgs> | null
+    proposal: Prisma.$ProposalPayload<ExtArgs> | null
     payment: Prisma.$PaymentPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     amount: number
     type: $Enums.CreditType
-    user_id: string
-    job_id: string | null
-    payment_id: string | null
     description: string | null
+    user_id: string
+    proposal_id: string | null
+    payment_id: string | null
     created_at: Date
-    updated_at: Date
   }, ExtArgs["result"]["creditLog"]>
   composites: {}
 }
@@ -1325,7 +1241,7 @@ readonly fields: CreditLogFieldRefs;
 export interface Prisma__CreditLogClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  job<T extends Prisma.CreditLog$jobArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CreditLog$jobArgs<ExtArgs>>): Prisma.Prisma__JobClient<runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  proposal<T extends Prisma.CreditLog$proposalArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CreditLog$proposalArgs<ExtArgs>>): Prisma.Prisma__ProposalClient<runtime.Types.Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   payment<T extends Prisma.CreditLog$paymentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CreditLog$paymentArgs<ExtArgs>>): Prisma.Prisma__PaymentClient<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1359,12 +1275,11 @@ export interface CreditLogFieldRefs {
   readonly id: Prisma.FieldRef<"CreditLog", 'String'>
   readonly amount: Prisma.FieldRef<"CreditLog", 'Int'>
   readonly type: Prisma.FieldRef<"CreditLog", 'CreditType'>
-  readonly user_id: Prisma.FieldRef<"CreditLog", 'String'>
-  readonly job_id: Prisma.FieldRef<"CreditLog", 'String'>
-  readonly payment_id: Prisma.FieldRef<"CreditLog", 'String'>
   readonly description: Prisma.FieldRef<"CreditLog", 'String'>
+  readonly user_id: Prisma.FieldRef<"CreditLog", 'String'>
+  readonly proposal_id: Prisma.FieldRef<"CreditLog", 'String'>
+  readonly payment_id: Prisma.FieldRef<"CreditLog", 'String'>
   readonly created_at: Prisma.FieldRef<"CreditLog", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"CreditLog", 'DateTime'>
 }
     
 
@@ -1761,22 +1676,22 @@ export type CreditLogDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * CreditLog.job
+ * CreditLog.proposal
  */
-export type CreditLog$jobArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CreditLog$proposalArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Job
+   * Select specific fields to fetch from the Proposal
    */
-  select?: Prisma.JobSelect<ExtArgs> | null
+  select?: Prisma.ProposalSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Job
+   * Omit specific fields from the Proposal
    */
-  omit?: Prisma.JobOmit<ExtArgs> | null
+  omit?: Prisma.ProposalOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.JobInclude<ExtArgs> | null
-  where?: Prisma.JobWhereInput
+  include?: Prisma.ProposalInclude<ExtArgs> | null
+  where?: Prisma.ProposalWhereInput
 }
 
 /**

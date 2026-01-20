@@ -43,30 +43,30 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
- * Model PackageBenefit
+ * Model Resume
  * 
  */
-export type PackageBenefit = Prisma.PackageBenefitModel
+export type Resume = Prisma.ResumeModel
+/**
+ * Model Proposal
+ * 
+ */
+export type Proposal = Prisma.ProposalModel
 /**
  * Model CreditPackage
  * 
  */
 export type CreditPackage = Prisma.CreditPackageModel
 /**
+ * Model PackageBenefit
+ * 
+ */
+export type PackageBenefit = Prisma.PackageBenefitModel
+/**
  * Model Payment
  * 
  */
 export type Payment = Prisma.PaymentModel
-/**
- * Model Job
- * 
- */
-export type Job = Prisma.JobModel
-/**
- * Model Candidate
- * 
- */
-export type Candidate = Prisma.CandidateModel
 /**
  * Model CreditLog
  * 

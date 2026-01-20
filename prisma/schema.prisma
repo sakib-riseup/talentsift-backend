@@ -27,153 +27,173 @@ model User {
 
   // Relations
   payments   Payment[]
-  jobs       Job[]
+  resumes    Resume[]
+  proposals  Proposal[]
   creditLogs CreditLog[]
 
   @@index([email])
-  @@index([refresh_token])
-  @@index([password_reset_token])
-  @@index([role])
-  @@index([is_active])
-  @@index([is_deleted])
   @@map("users")
 }
 
-model PackageBenefit {
-  id                String   @id @default(cuid())
-  benefit           String
-  credit_package_id String?
-  created_at        DateTime @default(now())
-  updated_at        DateTime @updatedAt
+model Resume {
+  id          String      @id @default(cuid())
+  title       String // e.g., "Senior React Developer Resume"
+  niche       ResumeNiche
+  resume_url  String? // PDF Link
+  resume_text String?     @db.Text // Extracted text for the AI to read
+  is_default  Boolean     @default(false) // Helps auto-select for the user
 
-  // Relations
-  creditPackage CreditPackage? @relation(fields: [credit_package_id], references: [id], onDelete: Cascade)
+  user_id   String
+  user      User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  proposals Proposal[]
 
-  @@map("package_benefits")
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([user_id])
+  @@map("resumes")
 }
 
+model Proposal {
+  id   String       @id @default(cuid())
+  type ProposalType
+
+  // Input Data
+  job_url     String?
+  job_title   String? // Added to make the history list look better
+  job_details String  @db.Text
+
+  // Output Data
+  subject           String? // Important for "Job Application Email" type
+  generated_content String  @db.Text
+
+  // Settings used for generation
+  tone     ProposalTone @default(PROFESSIONAL)
+  language String       @default("English") // Future-proofing for multi-lang
+  ai_model String? // e.g., "gpt-4o", "claude-3.5-sonnet"
+
+  is_favorite Boolean @default(false)
+  user_id     String
+  resume_id   String?
+
+  user      User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  resume    Resume?    @relation(fields: [resume_id], references: [id], onDelete: SetNull)
+  creditLog CreditLog?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([user_id])
+  @@map("proposals")
+}
+
+// --- BILLING & LOGGING MODELS ---
+
 model CreditPackage {
-  id             String   @id @default(cuid())
+  id             String           @id @default(cuid())
   name           String
   description    String?
   credits        Int
   price          Float
-  is_active      Boolean  @default(true)
-  is_recommended Boolean  @default(false)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  is_active      Boolean          @default(true)
+  is_recommended Boolean          @default(false)
+  benefits       PackageBenefit[]
+  payments       Payment[]
 
-  // Relations
-  benefits PackageBenefit[]
-  payments Payment[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
-  @@index([is_active])
-  @@index([is_recommended])
   @@map("credit_packages")
 }
 
-model Payment {
+model PackageBenefit {
   id                String        @id @default(cuid())
-  user_id           String
-  package_id        String?
-  amount            Float
-  currency          String        @default("BDT")
-  bkash_payment_id  String?       @unique
-  bkash_trx_id      String?       @unique
-  status            PaymentStatus @default(PENDING)
-  credits_purchased Int
-  created_at        DateTime      @default(now())
-  updated_at        DateTime      @updatedAt
+  benefit           String
+  credit_package_id String
+  creditPackage     CreditPackage @relation(fields: [credit_package_id], references: [id], onDelete: Cascade)
 
-  // Relations
+  @@map("package_benefits")
+}
+
+model Payment {
+  id                 String        @id @default(cuid())
+  user_id            String
+  package_id         String?
+  amount             Float
+  currency           String        @default("USD") // Changed default to USD for international
+  gateway_payment_id String?       @unique // Generic name instead of bkash
+  gateway_trx_id     String?       @unique
+  status             PaymentStatus @default(PENDING)
+  credits_purchased  Int
+
   user      User           @relation(fields: [user_id], references: [id], onDelete: Restrict)
   package   CreditPackage? @relation(fields: [package_id], references: [id], onDelete: SetNull)
   creditLog CreditLog?
 
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
   @@index([user_id])
-  @@index([status])
-  @@index([created_at])
   @@map("payments")
 }
 
-model Job {
-  id           String      @id @default(cuid())
-  company_name String?
-  title        String
-  job_type     JobType
-  job_location JobLocation
-  description  String      @db.Text
-  status       JobStatus   @default(OPEN)
-  user_id      String
-  created_at   DateTime    @default(now())
-  updated_at   DateTime    @updatedAt
-
-  // Relations
-  user       User        @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  candidates Candidate[]
-  creditLogs CreditLog[]
-
-  @@index([user_id])
-  @@index([status])
-  @@index([created_at])
-  @@map("jobs")
-}
-
-model Candidate {
-  id          String   @id @default(cuid())
-  name        String
-  email       String
-  phone       String?
-  resume_url  String?
-  resume_text String?  @db.Text
-  score       Int
-  summary     String?  @db.Text
-  skills      String[]
-
-  job_id     String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  // Relations
-  job Job @relation(fields: [job_id], references: [id], onDelete: Cascade)
-
-  @@index([job_id])
-  @@index([score])
-  @@index([email])
-  @@map("candidates")
-}
-
 model CreditLog {
-  id String @id @default(cuid())
-
+  id          String     @id @default(cuid())
   amount      Int
   type        CreditType
-  user_id     String
-  job_id      String?
-  payment_id  String?    @unique
   description String?    @db.Text
 
-  // Relations
-  user    User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  job     Job?     @relation(fields: [job_id], references: [id], onDelete: SetNull)
-  payment Payment? @relation(fields: [payment_id], references: [id], onDelete: SetNull)
+  user_id     String
+  proposal_id String? @unique
+  payment_id  String? @unique
+
+  user     User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  proposal Proposal? @relation(fields: [proposal_id], references: [id], onDelete: SetNull)
+  payment  Payment?  @relation(fields: [payment_id], references: [id], onDelete: SetNull)
 
   created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
 
-  @@index([user_id])
-  @@index([type])
-  @@index([created_at])
   @@map("credit_logs")
 }
 
-// Enums
+// --- ENUMS ---
+
+enum ResumeNiche {
+  FRONTEND
+  BACKEND
+  FULL_STACK
+  MOBILE
+  UI_UX
+  DEVOPS
+  DATA_SCIENCE
+  OTHER
+}
+
+enum ProposalType {
+  UPWORK_COVER_LETTER
+  JOB_APPLICATION_EMAIL
+  LINKEDIN_MESSAGE
+  COLD_EMAIL
+}
+
+enum ProposalTone {
+  PROFESSIONAL
+  FRIENDLY
+  CONFIDENT
+  CASUAL
+  SHORT_CONCISE
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
 enum PaymentStatus {
   PENDING
   COMPLETED
   FAILED
   CANCELLED
-  REFUNDED
 }
 
 enum CreditType {
@@ -181,31 +201,4 @@ enum CreditType {
   USAGE
   BONUS
   REFUND
-  MANUAL_ADJUSTMENT
-}
-
-enum UserRole {
-  USER
-  SUBSCRIBER
-  SUPER_ADMIN
-}
-
-enum JobStatus {
-  OPEN
-  CLOSED
-  DRAFT
-  ARCHIVED
-}
-
-enum JobType {
-  FULL_TIME
-  PART_TIME
-  CONTRACT
-  FREELANCE
-}
-
-enum JobLocation {
-  ON_SITE
-  REMOTE
-  HYBRID
 }

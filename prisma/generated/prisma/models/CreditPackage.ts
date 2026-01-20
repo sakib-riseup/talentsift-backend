@@ -411,11 +411,6 @@ export type CreditPackageUncheckedUpdateManyInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type CreditPackageNullableScalarRelationFilter = {
-  is?: Prisma.CreditPackageWhereInput | null
-  isNot?: Prisma.CreditPackageWhereInput | null
-}
-
 export type CreditPackageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
@@ -462,20 +457,14 @@ export type CreditPackageSumOrderByAggregateInput = {
   price?: Prisma.SortOrder
 }
 
-export type CreditPackageCreateNestedOneWithoutBenefitsInput = {
-  create?: Prisma.XOR<Prisma.CreditPackageCreateWithoutBenefitsInput, Prisma.CreditPackageUncheckedCreateWithoutBenefitsInput>
-  connectOrCreate?: Prisma.CreditPackageCreateOrConnectWithoutBenefitsInput
-  connect?: Prisma.CreditPackageWhereUniqueInput
+export type CreditPackageScalarRelationFilter = {
+  is?: Prisma.CreditPackageWhereInput
+  isNot?: Prisma.CreditPackageWhereInput
 }
 
-export type CreditPackageUpdateOneWithoutBenefitsNestedInput = {
-  create?: Prisma.XOR<Prisma.CreditPackageCreateWithoutBenefitsInput, Prisma.CreditPackageUncheckedCreateWithoutBenefitsInput>
-  connectOrCreate?: Prisma.CreditPackageCreateOrConnectWithoutBenefitsInput
-  upsert?: Prisma.CreditPackageUpsertWithoutBenefitsInput
-  disconnect?: Prisma.CreditPackageWhereInput | boolean
-  delete?: Prisma.CreditPackageWhereInput | boolean
-  connect?: Prisma.CreditPackageWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CreditPackageUpdateToOneWithWhereWithoutBenefitsInput, Prisma.CreditPackageUpdateWithoutBenefitsInput>, Prisma.CreditPackageUncheckedUpdateWithoutBenefitsInput>
+export type CreditPackageNullableScalarRelationFilter = {
+  is?: Prisma.CreditPackageWhereInput | null
+  isNot?: Prisma.CreditPackageWhereInput | null
 }
 
 export type FloatFieldUpdateOperationsInput = {
@@ -484,6 +473,20 @@ export type FloatFieldUpdateOperationsInput = {
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type CreditPackageCreateNestedOneWithoutBenefitsInput = {
+  create?: Prisma.XOR<Prisma.CreditPackageCreateWithoutBenefitsInput, Prisma.CreditPackageUncheckedCreateWithoutBenefitsInput>
+  connectOrCreate?: Prisma.CreditPackageCreateOrConnectWithoutBenefitsInput
+  connect?: Prisma.CreditPackageWhereUniqueInput
+}
+
+export type CreditPackageUpdateOneRequiredWithoutBenefitsNestedInput = {
+  create?: Prisma.XOR<Prisma.CreditPackageCreateWithoutBenefitsInput, Prisma.CreditPackageUncheckedCreateWithoutBenefitsInput>
+  connectOrCreate?: Prisma.CreditPackageCreateOrConnectWithoutBenefitsInput
+  upsert?: Prisma.CreditPackageUpsertWithoutBenefitsInput
+  connect?: Prisma.CreditPackageWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CreditPackageUpdateToOneWithWhereWithoutBenefitsInput, Prisma.CreditPackageUpdateWithoutBenefitsInput>, Prisma.CreditPackageUncheckedUpdateWithoutBenefitsInput>
 }
 
 export type CreditPackageCreateNestedOneWithoutPaymentsInput = {

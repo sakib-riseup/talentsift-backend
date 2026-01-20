@@ -9,10 +9,10 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User'
-export type * from './models/PackageBenefit'
+export type * from './models/Resume'
+export type * from './models/Proposal'
 export type * from './models/CreditPackage'
+export type * from './models/PackageBenefit'
 export type * from './models/Payment'
-export type * from './models/Job'
-export type * from './models/Candidate'
 export type * from './models/CreditLog'
 export type * from './commonInputTypes'

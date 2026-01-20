@@ -52,11 +52,11 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  PackageBenefit: 'PackageBenefit',
+  Resume: 'Resume',
+  Proposal: 'Proposal',
   CreditPackage: 'CreditPackage',
+  PackageBenefit: 'PackageBenefit',
   Payment: 'Payment',
-  Job: 'Job',
-  Candidate: 'Candidate',
   CreditLog: 'CreditLog'
 } as const
 
@@ -98,15 +98,40 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const PackageBenefitScalarFieldEnum = {
+export const ResumeScalarFieldEnum = {
   id: 'id',
-  benefit: 'benefit',
-  credit_package_id: 'credit_package_id',
+  title: 'title',
+  niche: 'niche',
+  resume_url: 'resume_url',
+  resume_text: 'resume_text',
+  is_default: 'is_default',
+  user_id: 'user_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
-export type PackageBenefitScalarFieldEnum = (typeof PackageBenefitScalarFieldEnum)[keyof typeof PackageBenefitScalarFieldEnum]
+export type ResumeScalarFieldEnum = (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum]
+
+
+export const ProposalScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  job_url: 'job_url',
+  job_title: 'job_title',
+  job_details: 'job_details',
+  subject: 'subject',
+  generated_content: 'generated_content',
+  tone: 'tone',
+  language: 'language',
+  ai_model: 'ai_model',
+  is_favorite: 'is_favorite',
+  user_id: 'user_id',
+  resume_id: 'resume_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type ProposalScalarFieldEnum = (typeof ProposalScalarFieldEnum)[keyof typeof ProposalScalarFieldEnum]
 
 
 export const CreditPackageScalarFieldEnum = {
@@ -124,14 +149,23 @@ export const CreditPackageScalarFieldEnum = {
 export type CreditPackageScalarFieldEnum = (typeof CreditPackageScalarFieldEnum)[keyof typeof CreditPackageScalarFieldEnum]
 
 
+export const PackageBenefitScalarFieldEnum = {
+  id: 'id',
+  benefit: 'benefit',
+  credit_package_id: 'credit_package_id'
+} as const
+
+export type PackageBenefitScalarFieldEnum = (typeof PackageBenefitScalarFieldEnum)[keyof typeof PackageBenefitScalarFieldEnum]
+
+
 export const PaymentScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   package_id: 'package_id',
   amount: 'amount',
   currency: 'currency',
-  bkash_payment_id: 'bkash_payment_id',
-  bkash_trx_id: 'bkash_trx_id',
+  gateway_payment_id: 'gateway_payment_id',
+  gateway_trx_id: 'gateway_trx_id',
   status: 'status',
   credits_purchased: 'credits_purchased',
   created_at: 'created_at',
@@ -141,50 +175,15 @@ export const PaymentScalarFieldEnum = {
 export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
 
 
-export const JobScalarFieldEnum = {
-  id: 'id',
-  company_name: 'company_name',
-  title: 'title',
-  job_type: 'job_type',
-  job_location: 'job_location',
-  description: 'description',
-  status: 'status',
-  user_id: 'user_id',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
-
-
-export const CandidateScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  email: 'email',
-  phone: 'phone',
-  resume_url: 'resume_url',
-  resume_text: 'resume_text',
-  score: 'score',
-  summary: 'summary',
-  skills: 'skills',
-  job_id: 'job_id',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type CandidateScalarFieldEnum = (typeof CandidateScalarFieldEnum)[keyof typeof CandidateScalarFieldEnum]
-
-
 export const CreditLogScalarFieldEnum = {
   id: 'id',
   amount: 'amount',
   type: 'type',
-  user_id: 'user_id',
-  job_id: 'job_id',
-  payment_id: 'payment_id',
   description: 'description',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+  user_id: 'user_id',
+  proposal_id: 'proposal_id',
+  payment_id: 'payment_id',
+  created_at: 'created_at'
 } as const
 
 export type CreditLogScalarFieldEnum = (typeof CreditLogScalarFieldEnum)[keyof typeof CreditLogScalarFieldEnum]
