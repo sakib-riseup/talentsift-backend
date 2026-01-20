@@ -37,11 +37,11 @@ model User {
 
 model Resume {
   id          String      @id @default(cuid())
-  title       String // e.g., "Senior React Developer Resume"
+  title       String
   niche       ResumeNiche
-  resume_url  String? // PDF Link
-  resume_text String?     @db.Text // Extracted text for the AI to read
-  is_default  Boolean     @default(false) // Helps auto-select for the user
+  resume_url  String?
+  resume_text String?     @db.Text
+  is_default  Boolean     @default(false)
 
   user_id   String
   user      User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
@@ -58,19 +58,16 @@ model Proposal {
   id   String       @id @default(cuid())
   type ProposalType
 
-  // Input Data
   job_url     String?
-  job_title   String? // Added to make the history list look better
+  job_title   String?
   job_details String  @db.Text
 
-  // Output Data
-  subject           String? // Important for "Job Application Email" type
+  subject           String?
   generated_content String  @db.Text
 
-  // Settings used for generation
   tone     ProposalTone @default(PROFESSIONAL)
-  language String       @default("English") // Future-proofing for multi-lang
-  ai_model String? // e.g., "gpt-4o", "claude-3.5-sonnet"
+  language String       @default("English")
+  ai_model String?
 
   is_favorite Boolean @default(false)
   user_id     String
@@ -120,8 +117,8 @@ model Payment {
   user_id            String
   package_id         String?
   amount             Float
-  currency           String        @default("USD") // Changed default to USD for international
-  gateway_payment_id String?       @unique // Generic name instead of bkash
+  currency           String        @default("USD")
+  gateway_payment_id String?       @unique
   gateway_trx_id     String?       @unique
   status             PaymentStatus @default(PENDING)
   credits_purchased  Int
